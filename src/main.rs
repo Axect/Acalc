@@ -87,7 +87,41 @@ fn main() {
     let law_fit = fit_sub(&law_origin, &law_standard);
     law_fit.print();
     law_origin.fmap(|t| law_fit.calc(t, Subject::Sub)).print();
+    
+    // 13) Physics 1
+    let phy1_origin = c!(50, 47, 45, 41, 36, 27, 17, 12, 7);
+    let phy1_standard = c!(66, 64, 62, 59, 55, 48, 40, 36, 32);
+    let phy1_fit = fit_sub(&phy1_origin, &phy1_standard);
+    phy1_fit.print();
+    phy1_origin.fmap(|t| phy1_fit.calc(t, Subject::Sub)).print();
 
+    // 14) Physics 2
+    let phy2_origin = c!(50, 47, 42, 37, 28, 17, 12, 8, 6);
+    let phy2_standard = c!(70, 68, 64, 60, 53, 45, 41, 38, 36);
+    let phy2_fit = fit_sub(&phy2_origin, &phy2_standard);
+    phy2_fit.print();
+    phy2_origin.fmap(|t| phy2_fit.calc(t, Subject::Sub)).print();
+
+    // 15) Chemistry 1
+    let chem1_origin = c!(50, 47, 43, 40, 37, 30, 21, 14, 9);
+    let chem1_standard = c!(67, 64, 61, 58, 55, 49, 41, 35, 31);
+    let chem1_fit = fit_sub(&chem1_origin, &chem1_standard);
+    chem1_fit.print();
+    chem1_origin.fmap(|t| chem1_fit.calc(t, Subject::Sub)).print();
+
+    // 16) Chemistry 2
+    let chem2_origin = c!(50, 50, 44, 39, 32, 21, 13, 9, 6);
+    let chem2_standard = c!(67, 67, 63, 59, 54, 46, 40, 37, 35);
+    let chem2_fit = fit_sub(&chem2_origin, &chem2_standard);
+    chem2_fit.print();
+    chem2_origin.fmap(|t| chem2_fit.calc(t, Subject::Sub)).print();
+    
+    // 17) Biology 1
+    let bio1_origin = c!(50, 48, 44, 39, 33, 24, 15, 12, 8);
+    let bio1_standard = c!(67, 66, 63, 59, 54, 47, 40, 37, 34);
+    let bio1_fit = fit_sub(&bio1_origin, &bio1_standard);
+    bio1_fit.print();
+    bio1_origin.fmap(|t| bio1_fit.calc(t, Subject::Sub)).print();
 }
 
 #[derive(Debug, Copy, Clone)]
