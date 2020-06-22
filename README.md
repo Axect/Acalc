@@ -6,8 +6,9 @@ Academic Score Calculation program
 
 ### Fitting
 
-* Input: Standard Score
-* Output: Percentage
+* Input: Original Score
+* Output: Standard Score
 * Parameter: $m, \sigma$
+    * Input: $x$ (Original score)
     * Standard score : $s = 20 \times \dfrac{x-m}{\sigma} + 100$
-    * Output: $\displaystyle \int_{x}^\infty p(t)dt$, where $p(t)\sim \mathcal{N}(x|m,\sigma^2)$
+    * Output: $m, \sigma$ (Fitted)
