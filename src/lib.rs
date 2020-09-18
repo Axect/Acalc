@@ -58,7 +58,7 @@ pub fn load_data(n: usize, score_kind: ScoreKind) -> DataFrame {
 /// 2020 대학수학능력시험 원점수, 표준점수 자료
 /// 
 /// * Reference: [Megastudy](https://www.megastudy.net/Entinfo/service_p/rank_cut/jungsi_real.asp)
-pub fn suneung_2020(sub: Subject, score: f64) -> f64 {
+pub fn suneung_2020() {
     // 2020
     // 1) Korean
     let korean_origin = c!(100, 91, 85, 77, 67, 55, 43, 32, 23);
@@ -81,8 +81,8 @@ pub fn suneung_2020(sub: Subject, score: f64) -> f64 {
     let wg_standard = c!(65, 64, 62, 60, 54, 46, 41, 36, 33);
 
     // 6) Word History
-    let wh_origin = c!(50, 47, 43, 35, 21, 13, 9, 6);
-    let wh_standard = c!(65, 63, 60, 55, 45, 40, 37, 35);
+    let wh_origin = c!(50, 47, 47, 43, 35, 21, 13, 9, 6);
+    let wh_standard = c!(65, 63, 63, 60, 55, 45, 40, 37, 35);
 
     // 7) Economics
     let eco_origin = c!(50, 45, 40, 34, 27, 18, 11, 10, 7);
@@ -101,8 +101,8 @@ pub fn suneung_2020(sub: Subject, score: f64) -> f64 {
     let leth_standard = c!(65, 64, 62, 59, 55, 48, 42, 35, 31);
 
     // 11) Ethics and Morphism
-    let eth_origin = c!(50, 50, 46, 40, 25, 16, 10, 7);
-    let eth_standard = c!(62, 62, 60, 56, 46, 40, 36, 34);
+    let eth_origin = c!(50, 50, 50, 46, 40, 25, 16, 10, 7);
+    let eth_standard = c!(62, 62, 62, 60, 56, 46, 40, 36, 34);
 
     // 12) Law & Politics
     let law_origin = c!(50, 47, 45, 40, 32, 21, 13, 9, 5);
@@ -140,144 +140,144 @@ pub fn suneung_2020(sub: Subject, score: f64) -> f64 {
     let earth2_origin = c!(50, 48, 44, 41, 33, 22, 14, 10, 7);
     let earth2_standard = c!(66, 65, 62, 60, 54, 46, 40, 37, 35);
 
-    match sub {
-        Subject::KO => {
-            let fit = fit_main(&korean_origin, &korean_standard);
-            fit.calc(score, Category::Main)
-        }
-        Subject::MA1 => {
-            let fit = fit_main(&math1_origin, &math1_standard);
-            fit.calc(score, Category::Main)
-        }
-        Subject::MA2 => {
-            let fit = fit_main(&math2_origin, &math2_standard);
-            fit.calc(score, Category::Main)
-        }
-        Subject::KG => {
-            let fit = fit_sub(&kg_origin, &kg_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::WG => {
-            let fit = fit_sub(&wg_origin, &wg_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::WH => {
-            let fit = fit_sub(&wh_origin, &wh_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::EA => {
-            let fit = fit_sub(&ea_origin, &ea_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::EC => {
-            let fit = fit_sub(&eco_origin, &eco_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::SC => {
-            let fit = fit_sub(&socu_origin, &socu_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::LE => {
-            let fit = fit_sub(&leth_origin, &leth_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::EM => {
-            let fit = fit_sub(&eth_origin, &eth_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::LP => {
-            let fit = fit_sub(&law_origin, &law_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::PH1 => {
-            let fit = fit_sub(&phy1_origin, &phy1_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::PH2 => {
-            let fit = fit_sub(&phy2_origin, &phy2_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::CH1 => {
-            let fit = fit_sub(&chem1_origin, &chem1_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::CH2 => {
-            let fit = fit_sub(&chem2_origin, &chem2_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::BI1 => {
-            let fit = fit_sub(&bio1_origin, &bio1_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::BI2 => {
-            let fit = fit_sub(&bio2_origin, &bio2_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::EA1 => {
-            let fit = fit_sub(&earth1_origin, &earth1_standard);
-            fit.calc(score, Category::Sub)
-        }
-        Subject::EA2 => {
-            let fit = fit_sub(&earth2_origin, &earth2_standard);
-            fit.calc(score, Category::Sub)
-        }
-    }
+    //match sub {
+    //    Subject::KO => {
+    //        let fit = fit_main(&korean_origin, &korean_standard);
+    //        fit.calc(score, Category::Main)
+    //    }
+    //    Subject::MA1 => {
+    //        let fit = fit_main(&math1_origin, &math1_standard);
+    //        fit.calc(score, Category::Main)
+    //    }
+    //    Subject::MA2 => {
+    //        let fit = fit_main(&math2_origin, &math2_standard);
+    //        fit.calc(score, Category::Main)
+    //    }
+    //    Subject::KG => {
+    //        let fit = fit_sub(&kg_origin, &kg_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::WG => {
+    //        let fit = fit_sub(&wg_origin, &wg_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::WH => {
+    //        let fit = fit_sub(&wh_origin, &wh_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::EA => {
+    //        let fit = fit_sub(&ea_origin, &ea_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::EC => {
+    //        let fit = fit_sub(&eco_origin, &eco_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::SC => {
+    //        let fit = fit_sub(&socu_origin, &socu_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::LE => {
+    //        let fit = fit_sub(&leth_origin, &leth_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::EM => {
+    //        let fit = fit_sub(&eth_origin, &eth_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::LP => {
+    //        let fit = fit_sub(&law_origin, &law_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::PH1 => {
+    //        let fit = fit_sub(&phy1_origin, &phy1_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::PH2 => {
+    //        let fit = fit_sub(&phy2_origin, &phy2_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::CH1 => {
+    //        let fit = fit_sub(&chem1_origin, &chem1_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::CH2 => {
+    //        let fit = fit_sub(&chem2_origin, &chem2_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::BI1 => {
+    //        let fit = fit_sub(&bio1_origin, &bio1_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::BI2 => {
+    //        let fit = fit_sub(&bio2_origin, &bio2_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::EA1 => {
+    //        let fit = fit_sub(&earth1_origin, &earth1_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //    Subject::EA2 => {
+    //        let fit = fit_sub(&earth2_origin, &earth2_standard);
+    //        fit.calc(score, Category::Sub)
+    //    }
+    //}
 
-    //let mut df_origin = DataFrame::with_header(vec![
-    //    "KO", "MA1", "MA2", "KG", "WG", "WH", "SC", "EA", "EC", "LE", "EM", "LP", "PH1", "PH2", "CH1",
-    //    "CH2", "BI1", "BI2", "EA1", "EA2",
-    //]);
-    //let mut df_standard = DataFrame::with_header(vec![
-    //    "KO", "MA1", "MA2", "KG", "WG", "WH", "SC", "EA", "EC", "LE", "EM", "LP", "PH1", "PH2", "CH1",
-    //    "CH2", "BI1", "BI2", "EA1", "EA2",
-    //]);
-    //df_origin["KO"] = korean_origin;
-    //df_origin["MA1"] = math1_origin;
-    //df_origin["MA2"] = math2_origin;
-    //df_origin["KG"] = kg_origin;
-    //df_origin["WG"] = wg_origin;
-    //df_origin["WH"] = wh_origin;
-    //df_origin["SC"] = socu_origin;
-    //df_origin["EA"] = ea_origin;
-    //df_origin["EC"] = eco_origin;
-    //df_origin["LE"] = leth_origin;
-    //df_origin["EM"] = eth_origin;
-    //df_origin["LP"] = law_origin;
-    //df_origin["PH1"] = phy1_origin;
-    //df_origin["PH2"] = phy2_origin;
-    //df_origin["CH1"] = chem1_origin;
-    //df_origin["CH2"] = chem2_origin;
-    //df_origin["BI1"] = bio1_origin;
-    //df_origin["BI2"] = bio2_origin;
-    //df_origin["EA1"] = earth1_origin;
-    //df_origin["EA2"] = earth2_origin;
-    //df_standard["KO"] = korean_standard;
-    //df_standard["MA1"] = math1_standard;
-    //df_standard["MA2"] = math2_standard;
-    //df_standard["KG"] = kg_standard;
-    //df_standard["WG"] = wg_standard;
-    //df_standard["WH"] = wh_standard;
-    //df_standard["SC"] = socu_standard;
-    //df_standard["EA"] = ea_standard;
-    //df_standard["EC"] = eco_standard;
-    //df_standard["LE"] = leth_standard;
-    //df_standard["EM"] = eth_standard;
-    //df_standard["LP"] = law_standard;
-    //df_standard["PH1"] = phy1_standard;
-    //df_standard["PH2"] = phy2_standard;
-    //df_standard["CH1"] = chem1_standard;
-    //df_standard["CH2"] = chem2_standard;
-    //df_standard["BI1"] = bio1_standard;
-    //df_standard["BI2"] = bio2_standard;
-    //df_standard["EA1"] = earth1_standard;
-    //df_standard["EA2"] = earth2_standard;
+    let mut df_origin = DataFrame::with_header(vec![
+        "KO", "MA1", "MA2", "KG", "WG", "WH", "SC", "EA", "EC", "LE", "EM", "LP", "PH1", "PH2", "CH1",
+        "CH2", "BI1", "BI2", "EA1", "EA2",
+    ]);
+    let mut df_standard = DataFrame::with_header(vec![
+        "KO", "MA1", "MA2", "KG", "WG", "WH", "SC", "EA", "EC", "LE", "EM", "LP", "PH1", "PH2", "CH1",
+        "CH2", "BI1", "BI2", "EA1", "EA2",
+    ]);
+    df_origin["KO"] = korean_origin;
+    df_origin["MA1"] = math1_origin;
+    df_origin["MA2"] = math2_origin;
+    df_origin["KG"] = kg_origin;
+    df_origin["WG"] = wg_origin;
+    df_origin["WH"] = wh_origin;
+    df_origin["SC"] = socu_origin;
+    df_origin["EA"] = ea_origin;
+    df_origin["EC"] = eco_origin;
+    df_origin["LE"] = leth_origin;
+    df_origin["EM"] = eth_origin;
+    df_origin["LP"] = law_origin;
+    df_origin["PH1"] = phy1_origin;
+    df_origin["PH2"] = phy2_origin;
+    df_origin["CH1"] = chem1_origin;
+    df_origin["CH2"] = chem2_origin;
+    df_origin["BI1"] = bio1_origin;
+    df_origin["BI2"] = bio2_origin;
+    df_origin["EA1"] = earth1_origin;
+    df_origin["EA2"] = earth2_origin;
+    df_standard["KO"] = korean_standard;
+    df_standard["MA1"] = math1_standard;
+    df_standard["MA2"] = math2_standard;
+    df_standard["KG"] = kg_standard;
+    df_standard["WG"] = wg_standard;
+    df_standard["WH"] = wh_standard;
+    df_standard["SC"] = socu_standard;
+    df_standard["EA"] = ea_standard;
+    df_standard["EC"] = eco_standard;
+    df_standard["LE"] = leth_standard;
+    df_standard["EM"] = eth_standard;
+    df_standard["LP"] = law_standard;
+    df_standard["PH1"] = phy1_standard;
+    df_standard["PH2"] = phy2_standard;
+    df_standard["CH1"] = chem1_standard;
+    df_standard["CH2"] = chem2_standard;
+    df_standard["BI1"] = bio1_standard;
+    df_standard["BI2"] = bio2_standard;
+    df_standard["EA1"] = earth1_standard;
+    df_standard["EA2"] = earth2_standard;
 
-    //df_origin
-    //    .write_nc("data/suneung_2020_org.nc")
-    //    .expect("Can't write origin nc file");
-    //df_standard
-    //    .write_nc("data/suneung_2020_std.nc")
-    //    .expect("Can't write standard nc file");
+    df_origin
+        .write_csv("data/suneung_2020_org.csv")
+        .expect("Can't write origin nc file");
+    df_standard
+        .write_csv("data/suneung_2020_std.csv")
+        .expect("Can't write standard nc file");
 }
 
 // =============================================================================
