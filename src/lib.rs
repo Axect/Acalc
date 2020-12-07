@@ -52,6 +52,91 @@ pub fn load_data(n: usize, score_kind: ScoreKind) -> DataFrame {
     }
 }
 
+#[derive(Debug, Clone)]
+pub struct UserScore<'a> {
+    pub subj: Vec<&'static str>,
+    pub grade: Vec<usize>,
+    pub level: Level,
+    pub origin: Vec<usize>,
+    pub standard: Vec<usize>,
+    pub weight: Vec<f64>,
+    pub ref_origin: &'a DataFrame,
+    pub ref_standard: &'a DataFrame,
+}
+
+impl<'a> UserScore<'a> {
+    pub fn with_grade(subj: Vec<&'static str>, grade: Vec<usize>, ref_origin: &'a DataFrame, ref_standard: &'a DataFrame) -> Self {
+        Self {
+            subj,
+            grade,
+            level: Level::Medium,
+            origin: vec![],
+            standard: vec![],
+            weight: vec![],
+            ref_origin,
+            ref_standard,
+        }
+    }
+
+    pub fn set_level(&mut self, level: Level) -> &mut Self {
+        self.level = level;
+        self
+    }
+    
+    pub fn set_weight(&mut self, w: Vec<f64>) -> &mut Self {
+        self.weight = w;
+        self
+    }
+
+    pub fn calc_standard(&mut self) -> &mut Self {
+        let g = &self.grade;
+        let l = self.level;
+        for (i, &sub) in self.subj.iter().enumerate() {
+            self.standard.push(calc_via_level(sub, g[i], l, self.ref_standard));
+        }
+        self
+    }
+
+    pub fn calc_score(&self) -> usize {
+        let s = self.weight.sum();
+        let mut score = 0f64;
+        for (&w, &st) in self.weight.iter().zip(self.standard.iter()) {
+            score += w * st as f64;
+        }
+        (score / s * 3f64).round() as usize
+    }
+}
+
+pub fn find_subj_grade(subj: &str, score: usize, ref_data: &DataFrame) -> usize {
+    let v = &ref_data[subj];
+    let mut g: usize = 9;
+    for i in 0 .. v.len() {
+        if score >= v[i] as usize {
+            g = i+1;
+            break;
+        }
+    }
+    g
+}
+
+#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+pub enum Level {
+    High,
+    Medium,
+    Low,
+}
+
+pub fn calc_via_level(subj: &str, grade: usize, level: Level, ref_standard: &DataFrame) -> usize {
+    let i = grade - 1;
+    let l = match level {
+        Level::High => 16f64,
+        Level::Medium => 4f64,
+        Level::Low => 1f64,
+    };
+    let v = &ref_standard[subj];
+    ((v[i] * l + v[i+1] * 4f64) / (l+4f64)).round() as usize
+}
+
 // =============================================================================
 // Write Suneung Data
 // =============================================================================
